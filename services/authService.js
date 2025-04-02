@@ -52,6 +52,8 @@ const signInByPassword = async(data) => {
     return { token , userData};
 }
 
+/// only sign in by email
+
 module.exports = {
     checkDuplicateEmail,
     registerUser,
