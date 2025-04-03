@@ -1,8 +1,13 @@
 const mongoose = require("mongoose");
 
 const SubscriptionSchema = new mongoose.Schema({
-  name: { type: String, required: true, unique: true },
-  description: { type: String, required: true, trim: true },
+  name: { type: String, required: true},
+  descriptions: [
+    {
+      id: { type: Number, required: true },
+      description: { type: String, required: true, trim: true }
+    }
+  ],
   isActive: {
     type: Boolean,
     default: true,

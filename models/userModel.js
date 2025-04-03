@@ -19,24 +19,35 @@ const userSchema = new mongoose.Schema(
       index: true,
       default: null,
     },
-    password: {
-      type: String,
-      required: true,
-    },
     role: {
       type: String,
-      enum: ["admin", "user"],
-      default: "user",
+      enum: ["admin", "client"],
+      default: "client",
     },
-    isActive: {
-      type: Boolean,
-      default: true,
+    subscriptionType:{
+      type:String,
+      required: true,
     },
-  },
-  {
-    timestamps: true,
-  }
-);
+    appliedCoupon: {
+      code: {
+        type: String,
+        trim: true
+      },
+      discountAmount: {
+        type: Number,
+        default: 0
+      },
+      appliedOn: {
+        type: Date
+      }
+    },
+    registeredAt: {
+      type: Date,
+      default: Date.now
+    }
+  },{
+    timestamps: true
+  });
 
 const User = mongoose.model("User", userSchema);
 module.exports = User;
